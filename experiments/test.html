@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <title>test</title>
+
+        <style type="text/css">
+
+        #container {
+            position: absolute;
+            display: block;
+            text-align: center;
+            line-height: 150px;
+            width: 150px;
+            background: #ccc;
+        }
+
+        #container:after {
+            content: "loading..."
+        }
+        
+        #testimage {
+            position: absolute;
+            display: block;
+            text-align: center;
+            background-color: red;
+            line-height: 150px;
+            width: 150px;
+        }
+        
+        </style>
+    </head>
+
+    <body>
+
+        <div id="container">
+            <img id="testimage" src="https://apis.frederikheld.de/easteregg/?delay=1000" alt="can't load image" />
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,215 @@
+@font-face {
+    font-family: Overpass;
+    src: url('../fonts/Overpass/Overpass-Light.ttf');
+    font-weight: light;
+}
+
+@font-face {
+    font-family: Overpass;
+    src: url('../fonts/Overpass/Overpass-Regular.ttf');
+}
+
+@font-face {
+    font-family: Overpass;
+    src: url('../fonts/Overpass/Overpass-Bold.ttf');
+    font-weight: bold;
+}
+
+:root {
+    --gap: 16px;
+    --code-bg: #eee;
+    --primary: #000;
+    --highlight: #2098D1;
+    --card-flip-time: 0.5s;
+}
+
+html, body {
+    font-family: 'Overpass', sans-serif;
+}
+
+.main .profile {
+    position: relative;
+}
+
+/* visual effects on menu */
+
+nav.nav {
+    font-weight: bold;
+}
+
+nav.nav ul { /* make menu effects fully visible */
+    overflow: visible;
+}
+
+
+/* logo*/
+
+/*
+    Underline From Center
+
+    Source: hover.css by Ian Lunn (https://github.com/IanLunn/Hover)
+    Copyright: Copyright 2017 Ian Lunn Design Limited
+    License: MIT (https://github.com/IanLunn/Hover/blob/master/license.txt)
+
+    start
+*/
+
+nav.nav .logo a:not(#theme-toggle) {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+}
+
+nav.nav .logo a:not(#theme-toggle):before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 51%;
+    right: 51%;
+    bottom: 14px;
+    background: var(--highlight);
+    height: 3px;
+    -webkit-transition-property: left, right;
+    transition-property: left, right;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+nav.nav .logo a:not(#theme-toggle):hover:before, nav.nav a:not(#theme-toggle):focus:before, nav.nav a:not(#theme-toggle):active:before {
+    left: 0;
+    right: 0;
+}
+
+/* end */
+
+
+/* main menu */
+
+nav.nav .menu a span {
+    padding: 8px;
+    border-radius: 4px;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+/* nav.nav .menu li:first-child a { */
+nav.nav .menu li a {
+    margin-left: -8px; /* to compensate for padding if menu moves below logo on small screens */
+}
+
+nav.nav .menu a:hover span {
+    background-color: #ccc;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+nav.nav .menu a span.active { /* removes highlight */
+    border-bottom: 0;
+}
+  
+
+/* social icons */
+
+.social-icons a svg {
+    color: var(--primary);
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.social-icons a:hover svg {
+    color: var(--highlight);
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+
+/* Avatar */
+
+/*
+    Flip Card
+    source: https://www.smashingmagazine.com/2020/02/magic-flip-cards-common-sizing-problem/
+
+    start
+*/
+
+.profile figure {
+    margin-bottom: var(--gap);
+}
+
+.cards {
+    display: grid;
+}
+
+.card {
+    -webkit-perspective: 40rem;
+            perspective: 40rem;
+    margin: auto;
+}
+
+.card-body {
+    display: -webkit-box;
+    display: flex;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    -webkit-transition: var(--card-flip-time) transform;
+    transition: var(--card-flip-time) transform;
+}
+
+.card:hover .card-body, .card:focus .card-body {
+    -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+}
+
+.card-front, .card-back {
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    min-width: 100%;
+}
+
+.card-back {
+    -webkit-transform: rotateY(-180deg) translate(100%, 0);
+            transform: rotateY(-180deg) translate(100%, 0);
+}
+
+.card-back img {
+    width: auto;
+    height: 100%;
+    padding: 2.2rem;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.card-front, .card-back {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+}
+
+.card-front *, .card-back * {
+    margin: auto;
+}
+
+/* end */
